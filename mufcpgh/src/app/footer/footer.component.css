@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-20);
+}
+
+footer {
+  background: linear-gradient(180deg, var(--mufc-black), #0A0A0A);
+  color: var(--gray-300);
+  padding: var(--space-12) var(--space-6);
+  border-top: 3px solid var(--mufc-red-primary);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  footer {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  footer p {
+    font-size: var(--text-sm);
+  }
+}

@@ -4,55 +4,125 @@
 }
 
 .header-bar {
-  background-color: black;
-  padding: 50px 20px;
+  background: linear-gradient(180deg, #0A0A0A 0%, var(--mufc-black) 100%);
+  padding: var(--space-6) var(--space-5);
   box-sizing: border-box;
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  backdrop-filter: blur(10px);
 }
 
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; /* Space between the home button and the logo */
-  align-items: center; /* Center the content vertically */
+  align-items: center;
   position: relative;
+  justify-content: flex-start;
 }
 
-.home-button, .gallery-button, .about-button {
+/* Navigation container - removes hardcoded positioning */
+.nav-buttons {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.home-button,
+.gallery-button,
+.about-button {
   background-color: transparent;
   border: none;
-  color: white;
-  font-size: 18px;
+  color: var(--mufc-white);
+  font-size: var(--text-lg);
+  font-weight: 500;
   cursor: pointer;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+/* Modern hover effect with underline animation */
+.home-button::after,
+.gallery-button::after,
+.about-button::after {
+  content: '';
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mufc-red-light), var(--mufc-red-primary));
+  transform: translateX(-50%);
+  transition: width var(--transition-base);
 }
 
-.gallery-button {
-  left: 100px; /* Position the gallery button 100px to the right of the home button */
+.home-button:hover,
+.gallery-button:hover,
+.about-button:hover {
+  color: var(--mufc-red-light);
+  background-color: rgba(218, 41, 28, 0.1);
+  transform: translateY(-2px);
 }
 
-.about-button {
-  left: 200px; /* Position the about button to the right of the gallery button */
+.home-button:hover::after,
+.gallery-button:hover::after,
+.about-button:hover::after {
+  width: 80%;
+}
+
+/* Active state */
+.home-button:active,
+.gallery-button:active,
+.about-button:active {
+  transform: translateY(0);
 }
 
 .header-logo {
-  height: 80px; /* Adjust the height as needed */
-  margin: 0 auto; /* Center the logo */
+  height: 80px;
+  width: auto;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: transform var(--transition-base);
 }
 
-.home-button:hover, .gallery-button:hover, .about-button:hover {
-  color: #f00000; /* Change to the desired color on hover */
+.header-logo:hover {
+  transform: translateX(-50%) scale(1.05);
 }
 
 .container {
-  max-width: 1200px; /* Match the max-width of header-content */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--space-8) var(--space-5);
   box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .nav-buttons {
+    justify-content: center;
+  }
+
+  .home-button,
+  .gallery-button,
+  .about-button {
+    font-size: var(--text-base);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .header-logo {
+    height: 60px;
+  }
 }

@@ -1,15 +1,99 @@
-.btn img {
-  width: 27px; /* Adjust width as needed */
-  height: 27px; /* Adjust height as needed */
-}
-
-.rounded-container {
-  border-radius: 15px; /* Adjust the value to control the corner roundness */
-  background-color: #f8f9fa; /* Optional: Set your desired background color */
-  /*padding: 20px; !* Add padding to the container for content spacing *!*/
-  align-content: end;
+.social-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .social-media-text {
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-8);
+}
+
+.social-buttons-row {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--text-base);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow);
+  min-width: 240px;
+  justify-content: center;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  transition: transform var(--transition-base);
+}
+
+.social-btn:hover .social-icon {
+  transform: scale(1.1);
+}
+
+/* X logo styling - invert to white on black background */
+.twitter-btn .social-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Instagram button */
+.instagram-btn {
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+  color: white;
+}
+
+.instagram-btn:hover {
+  color: white;
+  background: linear-gradient(135deg, #9240c4, #ff2a2a, #ff8847);
+}
+
+/* X button - black branding */
+.twitter-btn {
+  background: #000000;
+  color: white;
+}
+
+.twitter-btn:hover {
+  background: #1a1a1a;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .social-buttons-row {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .social-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .social-media-text {
+    font-size: var(--text-xl);
+  }
 }

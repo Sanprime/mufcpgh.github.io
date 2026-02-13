@@ -1,1 +1,297 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles - MUFC Pittsburgh Design System */
+
+/* ============================================
+   CSS VARIABLES - Design System Foundation
+   ============================================ */
+
+:root {
+  /* Manchester United Brand Colors - Enhanced Palette */
+  --mufc-red-primary: #DA291C;      /* Official MUFC red */
+  --mufc-red-dark: #B71C1C;         /* Darker red for depth */
+  --mufc-red-light: #E94E4E;        /* Lighter red for accents */
+  --mufc-red-subtle: rgba(218, 41, 28, 0.1);  /* Subtle backgrounds */
+
+  /* Supporting Colors */
+  --mufc-black: #1A1A1A;            /* Deep black */
+  --mufc-gold: #FFD700;             /* Gold accents */
+  --mufc-white: #FFFFFF;
+
+  /* Neutral Scale */
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+
+  /* Typography Scale */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+                  'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+
+  /* Spacing Scale (8px base) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+
+  /* Shadows - Modern layered approach */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+            0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+               0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+               0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+               0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Red-themed shadows for brand elements */
+  --shadow-red: 0 4px 14px 0 rgba(218, 41, 28, 0.25);
+  --shadow-red-lg: 0 10px 30px -3px rgba(218, 41, 28, 0.3);
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius: 0.5rem;       /* 8px */
+  --radius-md: 0.75rem;   /* 12px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index scale */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+}
+
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--gray-900);
+  background-color: var(--gray-50);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modern focus styles */
+*:focus-visible {
+  outline: 2px solid var(--mufc-red-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Smooth transitions for interactive elements */
+a, button, input, textarea, select {
+  transition: all var(--transition-base);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Modern card styles */
+.card-modern {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.card-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Gradient backgrounds */
+.gradient-red {
+  background: linear-gradient(135deg, var(--mufc-red-primary), var(--mufc-red-dark));
+}
+
+/* Text utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--mufc-red-primary), var(--mufc-red-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   LOADING STATES & ANIMATIONS
+   ============================================ */
+
+/* Skeleton loading states */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gray-200) 25%,
+    var(--gray-100) 50%,
+    var(--gray-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for gallery items */
+.gallery .photo-container {
+  animation: fadeInUp 0.4s ease-out backwards;
+}
+
+.gallery .photo-container:nth-child(1) { animation-delay: 0.05s; }
+.gallery .photo-container:nth-child(2) { animation-delay: 0.1s; }
+.gallery .photo-container:nth-child(3) { animation-delay: 0.15s; }
+.gallery .photo-container:nth-child(4) { animation-delay: 0.2s; }
+.gallery .photo-container:nth-child(5) { animation-delay: 0.25s; }
+.gallery .photo-container:nth-child(6) { animation-delay: 0.3s; }
+.gallery .photo-container:nth-child(7) { animation-delay: 0.35s; }
+.gallery .photo-container:nth-child(8) { animation-delay: 0.4s; }
+
+/* Image lazy loading animation */
+img[loading="lazy"] {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow: 0 0 0 2px currentColor;
+    --shadow-md: 0 0 0 3px currentColor;
+    --shadow-lg: 0 0 0 4px currentColor;
+  }
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: var(--z-tooltip);
+  padding: var(--space-3) var(--space-4);
+  background: var(--mufc-red-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.skip-to-main:focus {
+  left: var(--space-4);
+  top: var(--space-4);
+}
