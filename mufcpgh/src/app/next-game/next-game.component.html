@@ -1,0 +1,102 @@
+<div class="next-game-container">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading next match...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error-state">
+    <h2 class="error-title">Unable to Load Match Data</h2>
+    <p class="error-message">{{ error }}</p>
+    <button class="refresh-button" (click)="refreshMatch()">Try Again</button>
+  </div>
+
+  <!-- Match Display -->
+  <div *ngIf="!loading && !error && match" class="match-display">
+    <!-- Header with Title and Refresh Button -->
+    <div class="match-header">
+      <h1 class="section-title">Next Game</h1>
+      <button
+        class="refresh-button"
+        (click)="refreshMatch()"
+        [disabled]="refreshing"
+      >
+        <span *ngIf="!refreshing">Refresh</span>
+        <span *ngIf="refreshing">Refreshing...</span>
+      </button>
+    </div>
+
+    <!-- Competition Badge -->
+    <div class="competition-badge">
+      {{ match.competition.name }}
+    </div>
+
+    <!-- Teams Container -->
+    <div class="teams-container">
+      <!-- Home Team -->
+      <div class="team home-team">
+        <img
+          [src]="match.homeTeam.crest"
+          [alt]="match.homeTeam.name"
+          class="team-crest"
+        >
+        <h2 class="team-name">{{ match.homeTeam.name }}</h2>
+      </div>
+
+      <!-- VS Separator -->
+      <div class="vs-separator">
+        <span>VS</span>
+      </div>
+
+      <!-- Away Team -->
+      <div class="team away-team">
+        <img
+          [src]="match.awayTeam.crest"
+          [alt]="match.awayTeam.name"
+          class="team-crest"
+        >
+        <h2 class="team-name">{{ match.awayTeam.name }}</h2>
+      </div>
+    </div>
+
+    <!-- Match Date/Time in EST -->
+    <div class="match-datetime">
+      <p class="date-label">Kickoff Time (EST)</p>
+      <p class="date-value">{{ matchDateEST }}</p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-timer" [class.urgent]="isUrgent">
+      <div class="countdown-unit">
+        <span class="countdown-value">{{ countdown.days }}</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value">{{ countdown.hours }}</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value">{{ countdown.minutes }}</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-value">{{ countdown.seconds }}</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Match Finished Indicator -->
+    <div *ngIf="countdown.isFinished" class="status-badge finished">
+      MATCH TIME HAS PASSED
+    </div>
+
+    <!-- Urgent Warning -->
+    <div *ngIf="isUrgent" class="status-badge urgent-warning">
+      Less than 24 hours until kickoff!
+    </div>
+  </div>
+</div>

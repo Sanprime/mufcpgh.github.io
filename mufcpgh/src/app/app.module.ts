@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './about-us/about-us.component';
+import { NextGameComponent } from './next-game/next-game.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     LinkTreeComponent,
     FooterComponent,
     PhotoGalleryComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    NextGameComponent
   ],
   imports: [
     BrowserModule,

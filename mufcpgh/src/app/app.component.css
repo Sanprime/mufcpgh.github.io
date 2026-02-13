@@ -32,6 +32,7 @@
 
 .home-button,
 .gallery-button,
+.next-game-button,
 .about-button {
   background-color: transparent;
   border: none;
@@ -49,6 +50,7 @@
 /* Modern hover effect with underline animation */
 .home-button::after,
 .gallery-button::after,
+.next-game-button::after,
 .about-button::after {
   content: '';
   position: absolute;
@@ -63,6 +65,7 @@
 
 .home-button:hover,
 .gallery-button:hover,
+.next-game-button:hover,
 .about-button:hover {
   color: var(--mufc-red-light);
   background-color: rgba(218, 41, 28, 0.1);
@@ -71,6 +74,7 @@
 
 .home-button:hover::after,
 .gallery-button:hover::after,
+.next-game-button:hover::after,
 .about-button:hover::after {
   width: 80%;
 }
@@ -78,6 +82,7 @@
 /* Active state */
 .home-button:active,
 .gallery-button:active,
+.next-game-button:active,
 .about-button:active {
   transform: translateY(0);
 }
@@ -117,6 +122,7 @@
 
   .home-button,
   .gallery-button,
+  .next-game-button,
   .about-button {
     font-size: var(--text-base);
     padding: var(--space-2) var(--space-3);

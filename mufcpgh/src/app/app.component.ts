@@ -26,4 +26,8 @@ export class AppComponent {
   navigateToAboutUs() {
     this.router.navigate(['/about-us'])
   }
+
+  navigateToNextGame() {
+    this.router.navigate(['/next-game']);
+  }
 }

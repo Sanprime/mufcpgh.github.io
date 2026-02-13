@@ -1,0 +1,372 @@
+.next-game-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-8);
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  position: relative;
+}
+
+/* Decorative corner accent */
+.next-game-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--mufc-red-primary), transparent);
+  border-radius: var(--radius-xl) 0 0 0;
+  opacity: 0.1;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-8);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--gray-200);
+  border-top-color: var(--mufc-red-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: var(--space-6);
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+}
+
+/* Error State */
+.error-state {
+  padding: var(--space-12);
+  text-align: center;
+}
+
+.error-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--mufc-red-primary);
+  margin-bottom: var(--space-4);
+}
+
+.error-message {
+  font-size: var(--text-lg);
+  color: var(--gray-700);
+  margin-bottom: var(--space-8);
+}
+
+/* Match Display */
+.match-display {
+  position: relative;
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-8);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--mufc-red-primary);
+  margin: 0;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mufc-red-primary), var(--mufc-gold));
+  border-radius: var(--radius-full);
+}
+
+.refresh-button {
+  background: linear-gradient(135deg, var(--mufc-red-primary), var(--mufc-red-light));
+  color: white;
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.refresh-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.refresh-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.refresh-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Competition Badge */
+.competition-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--mufc-red-primary), var(--mufc-red-light));
+  color: white;
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-md);
+}
+
+/* Teams Container */
+.teams-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: var(--space-12) 0;
+  gap: var(--space-8);
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.team-crest {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(var(--shadow-md));
+  transition: transform var(--transition-base);
+}
+
+.team-crest:hover {
+  transform: scale(1.1);
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gray-800);
+  text-align: center;
+  margin: 0;
+}
+
+.vs-separator {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--mufc-red-primary);
+  flex-shrink: 0;
+}
+
+/* Match Date/Time */
+.match-datetime {
+  text-align: center;
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+}
+
+.date-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--space-2) 0;
+}
+
+.date-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-10);
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  margin: var(--space-8) 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-timer.urgent {
+  background: linear-gradient(135deg, rgba(218, 41, 28, 0.1), rgba(218, 41, 28, 0.05));
+  border: 2px solid var(--mufc-red-primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(218, 41, 28, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(218, 41, 28, 0), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.countdown-value {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--mufc-red-primary);
+  font-family: var(--font-display);
+  line-height: 1;
+  min-width: 60px;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.countdown-separator {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--gray-400);
+  margin: 0 var(--space-2);
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* Status Badges */
+.status-badge {
+  text-align: center;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: var(--space-6);
+}
+
+.status-badge.finished {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-300);
+}
+
+.status-badge.urgent-warning {
+  background: linear-gradient(135deg, var(--mufc-red-primary), var(--mufc-red-light));
+  color: white;
+  box-shadow: var(--shadow-lg);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(218, 41, 28, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(218, 41, 28, 0.8);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .next-game-container {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .teams-container {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .vs-separator {
+    font-size: var(--text-3xl);
+    margin: var(--space-4) 0;
+  }
+
+  .team-crest {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-name {
+    font-size: var(--text-xl);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+  }
+
+  .countdown-timer {
+    gap: var(--space-2);
+    padding: var(--space-6);
+  }
+
+  .countdown-value {
+    font-size: var(--text-3xl);
+    min-width: 45px;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+  }
+
+  .countdown-separator {
+    font-size: var(--text-2xl);
+    margin: 0 var(--space-1);
+    margin-top: 4px;
+  }
+
+  .match-header {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
