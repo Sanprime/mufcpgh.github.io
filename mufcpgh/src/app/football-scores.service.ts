@@ -1,5 +1,5 @@
 import { Injectable, isDevMode } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
@@ -8,31 +8,22 @@ import {map} from "rxjs/operators";
 })
 export class FootballScoresService {
 
-  // Use proxy in development to avoid CORS, direct API in production
+  // Dev: local proxy; Prod: Cloudflare Worker proxy (handles auth + CORS)
   private apiUrl = isDevMode()
     ? '/api/teams/66/matches'
-    : 'https://api.football-data.org/v4/teams/66/matches';
+    : 'https://mufcpgh-api.sanjeev-ramanan96.workers.dev';
 
   constructor(private http: HttpClient) { }
 
   getUnitedScores(): Observable<any> {
-    const headers = new HttpHeaders({
-      'X-Auth-Token': '19de5c6e7e554dae8953e810a926fed1',
-      'Content-Type': 'application/json'
-    })
-    return this.http.get(this.apiUrl, { headers });
+    return this.http.get(this.apiUrl);
   }
 
   getNextMatch(): Observable<any> {
-    const headers = new HttpHeaders({
-      'X-Auth-Token': '19de5c6e7e554dae8953e810a926fed1',
-      'Content-Type': 'application/json'
-    })
-    // Get only scheduled/timed matches, sorted by date
     const params = {
       status: 'SCHEDULED,TIMED'
     };
-    return this.http.get<any>(this.apiUrl, { headers, params }).pipe(
+    return this.http.get<any>(this.apiUrl, { params }).pipe(
       map(response => response.matches[0]) // Get just the first match (next game)
     );
   }
